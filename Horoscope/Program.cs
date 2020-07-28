@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 
 namespace Horoscope
 {
@@ -7,22 +8,28 @@ namespace Horoscope
         static void Main(string[] args)
         {
             int selection = 0;
-            string repeat = "";
+            string repeat = "Y";
 
-            Console.WriteLine("Select your sign by entering the number found in the \"[]\"");
-            Console.WriteLine("[1] Aries");
-            Console.WriteLine("[2] Taurus");
-            Console.WriteLine("[3] Gemini");
-            Console.WriteLine("[4] Cancer");
-            Console.WriteLine("[5] Leo");
-            Console.WriteLine("[6] Virgo");
+            while (repeat == "Y")
+            {
+                Console.WriteLine("Select your sign by entering the number found in the \"[]\"");
+                Console.WriteLine("[1] Aries");
+                Console.WriteLine("[2] Taurus");
+                Console.WriteLine("[3] Gemini");
+                Console.WriteLine("[4] Cancer");
+                Console.WriteLine("[5] Leo");
+                Console.WriteLine("[6] Virgo");
 
-            selection = int.Parse(Console.ReadLine());
+                selection = int.Parse(Console.ReadLine());
 
-            DisplayHoroscope(selection);
-            Console.WriteLine();
-            Console.WriteLine("Would you like to check another horoscope? Y/N");
-            repeat = Console.ReadLine();      
+                DisplayHoroscope(selection);
+                Console.WriteLine();
+                Console.WriteLine("Would you like to check another horoscope? Y/N");
+                repeat = Console.ReadLine();
+                repeat = repeat.ToUpper();
+            }
+
+            Console.WriteLine("You can now exit the program.");
          }
 
         static void  DisplayHoroscope(int choice)
