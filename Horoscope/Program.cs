@@ -12,23 +12,37 @@ namespace Horoscope
 
             while (repeat == "Y")
             {
-                Console.WriteLine("Select your sign by entering the number found in the \"[]\"");
-                Console.WriteLine("[1] Aries");
-                Console.WriteLine("[2] Taurus");
-                Console.WriteLine("[3] Gemini");
-                Console.WriteLine("[4] Cancer");
-                Console.WriteLine("[5] Leo");
-                Console.WriteLine("[6] Virgo");
+                try
+                {
+                    Console.WriteLine("Select your sign by entering the number found in the \"[]\"");
+                    Console.WriteLine("[1] Aries");
+                    Console.WriteLine("[2] Taurus");
+                    Console.WriteLine("[3] Gemini");
+                    Console.WriteLine("[4] Cancer");
+                    Console.WriteLine("[5] Leo");
+                    Console.WriteLine("[6] Virgo");
 
-                selection = int.Parse(Console.ReadLine());
-
-                DisplayHoroscope(selection);
-                Console.WriteLine();
-                Console.WriteLine("Would you like to check another horoscope? Y/N");
-                repeat = Console.ReadLine();
-                repeat = repeat.ToUpper();
+                    selection = int.Parse(Console.ReadLine());
+                    if (selection <= 6)
+                    {
+                        DisplayHoroscope(selection);
+                        Console.WriteLine();
+                        Console.WriteLine("Would you like to check another horoscope? Y/N");
+                        repeat = Console.ReadLine();
+                        repeat = repeat.ToUpper();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Select a number 1-6.");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("You may only enter a number 1-6.");
+                }
+                
             }
-
+            
             Console.WriteLine("You can now exit the program.");
          }
 
@@ -61,10 +75,12 @@ namespace Horoscope
                     Console.Write("Reap all the riches that a new day has to offer, Virgo.");
                     break;
                 default :
-                    Console.WriteLine("Unknown entry.");
+                    
                     break;
             }
             return;
         }
+        //static string PromptForRepeat(string repeatChoice)
+       
     }
 }
